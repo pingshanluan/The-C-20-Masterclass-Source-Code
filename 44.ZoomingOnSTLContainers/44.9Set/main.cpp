@@ -141,7 +141,6 @@ int main(){
 
 
     //Can capture the insert result through a returned std::pair object.
-
     std::cout << "-------" << std::endl;
 
     //auto result = numbers.insert(14);
@@ -158,8 +157,15 @@ int main(){
     }
     print_collection(numbers);
 
+    //std::set method .insert() returns std::pair<iterator, bool>, 
+    //where the bool is false when the insertion failed (by adding duplicate values for example).
+    //can use set to check duplicate
+    std::set<int> set{ 1, 2, 3 };
+    auto result = set.insert(1);
+    if (!result.second)
+        std::cout << "Failed to insert element!, 1 already exists" << std::endl;
 
-    //Emplace 
+    //Emplace: also returns a std::pair<iterator, bool>
     std::cout << std::endl;
     std::cout << "emplace : " << std::endl;
     

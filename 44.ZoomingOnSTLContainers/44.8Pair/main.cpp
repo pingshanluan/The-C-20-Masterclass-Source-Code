@@ -17,6 +17,7 @@ int main(){
     std::cout << " pair2 : (" << pair2.first << "," << pair2.second << ")" << std::endl;
 
     //Code2 : auto[] syntax - collect components of a pair into variables.
+    //C++ 17 only
     std::cout << std::endl;
     std::cout << "auto[] syntax - collect components of a pair into variables : " << std::endl;
     auto [int_var, string_var] = pair1;
@@ -34,7 +35,7 @@ int main(){
     std::cout << "Student name : " << student.second << std::endl;
 
 
-    //Code4 : collection of pairs
+    //Code4 : collection of pairs, std::pair can only store one pair. For collections, must wrap into array or vector, etc.
     std::cout << std::endl;
     std::cout << "collection of pairs : " << std::endl;
     
