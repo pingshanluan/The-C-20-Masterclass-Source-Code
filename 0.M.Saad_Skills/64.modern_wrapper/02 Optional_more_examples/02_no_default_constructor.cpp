@@ -13,8 +13,9 @@ struct MyClass {
 };
 
 struct AnotherClass {
-	//MyClass obj;	// CE no default constructor
-	optional<MyClass> obj;	// perfect NO initialization
+	// MyClass obj;				// CE has no default constructor, can't do it this way.
+	// work around could be MyClass *obj; but this is ugly
+	optional<MyClass> obj; 		// perfect NO initialization. By default obj is nullopt - not constructed.
 
 	AnotherClass(int n) {
 		vector<int> v(n);
@@ -22,7 +23,7 @@ struct AnotherClass {
 			v[i] = i * i;
 
 		// emplace uses varidic template
-		obj.emplace(v, n, "Mostafa");
+		obj.emplace(v, n, "Mostafa"); 
 	}
 };
 

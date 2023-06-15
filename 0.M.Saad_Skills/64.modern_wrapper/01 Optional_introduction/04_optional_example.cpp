@@ -6,7 +6,7 @@ using namespace std;
 
 // https://www.bfilipek.com/2018/05/using-optional.html
 
-optional<int> ParseInt(char*arg) {
+optional<int> ParseInt(char* arg) {
 	try {
 		return stoi(string(arg));
 	} catch (...) {

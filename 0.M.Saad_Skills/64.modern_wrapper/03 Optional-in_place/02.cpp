@@ -9,20 +9,20 @@ struct Employee {
 	Employee(string name, int salary)  {
 		cout<<"Employee\n";
 	}
+	Employee(Employee &&emp){
+		cout<<"Employee &&\n";
+	}
 	~Employee() {
 		cout<<"~Employee\n";
 	}
-	Employee(const Employee &e) = delete;
-	Employee(Employee &&e) = delete;
 };
 
 int main() {
-	//CE: Can't copy!
-	//optional<Employee> emp1{Employee{"Hani", 20}};
+	optional<Employee> emp1{};	// Empty Optional
 
 	optional<Employee> emp2{std::in_place, "Hani", 20};
 	/*
-		~Employee
+		Employee
 		~Employee
 	 */
 
@@ -30,3 +30,7 @@ int main() {
 
 	return 0;
 }
+
+// template< class... Args >
+// constexpr explicit optional( std::in_place_t, Args&&... args );
+

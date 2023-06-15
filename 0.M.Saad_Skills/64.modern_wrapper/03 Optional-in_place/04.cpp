@@ -17,6 +17,7 @@ struct Employee {
 };
 
 int main() {
+	//make_optional with contruct in_place, no extra copies
 	auto emp = make_optional<Employee>("Hani", 20);
 	/*
 		~Employee

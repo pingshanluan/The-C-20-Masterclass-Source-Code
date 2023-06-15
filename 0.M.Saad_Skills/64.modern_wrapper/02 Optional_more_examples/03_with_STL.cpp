@@ -6,7 +6,7 @@ using namespace std;
 int main() {
 	optional<vector<int> > v { vector<int> { 1, 2, 3, 4 } };
 	optional<vector<int> > cpy = v;
-	// *v, v->, v.value()
+	//for acess value: *v, v->, v.value() ! make sure v does have value
 
 	v = nullopt;	// make nullopt
 	cout << v.value_or(vector<int>{}).size() << "\n";	// 0

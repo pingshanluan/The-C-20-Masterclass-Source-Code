@@ -5,14 +5,15 @@
 using namespace std;
 
 // https://cpluspluspedia.com/en/tutorial/2423/std--optional
-
+// more generic code
 template<class Range, class Pred>
 auto find_if(Range&& range, Pred&& p) {
 	auto b = begin(range), e = end(range);
 	auto r = find_if(b, e, p);
+	// finding the type of r
 	using iterator = decltype(r);
 	if (r == e)
-		return optional<iterator>();
+		return optional<iterator>();		//return nullopt
 	return optional<iterator>(r);
 }
 

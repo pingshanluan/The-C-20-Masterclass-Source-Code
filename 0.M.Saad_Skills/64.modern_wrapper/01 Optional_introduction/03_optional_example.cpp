@@ -3,6 +3,7 @@
 #include <optional>
 using namespace std;
 
+//optional: return may or may not has value
 optional<double> divide2(double a, double b) {
 	if (b != 0.f)
 		return a / b;

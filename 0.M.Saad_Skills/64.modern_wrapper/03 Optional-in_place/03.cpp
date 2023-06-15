@@ -9,17 +9,18 @@ struct Employee {
 	Employee(string name, int salary)  {
 		cout<<"Employee\n";
 	}
-	Employee(Employee &&emp){
-		cout<<"Employee &&\n";
-	}
 	~Employee() {
 		cout<<"~Employee\n";
 	}
+	//obj can't be copied or moved
+	Employee(const Employee &e) = delete;
+	Employee(Employee &&e) = delete;
 };
 
 int main() {
-	optional<Employee> emp1{};	// Empty Optional
-
+	//CE: Can't copy!
+	//optional<Employee> emp1{Employee{"Hani", 20}};
+	//have to construct with in_place	
 	optional<Employee> emp2{std::in_place, "Hani", 20};
 	/*
 		~Employee
@@ -30,7 +31,3 @@ int main() {
 
 	return 0;
 }
-
-// template< class... Args >
-// constexpr explicit optional( std::in_place_t, Args&&... args );
-
