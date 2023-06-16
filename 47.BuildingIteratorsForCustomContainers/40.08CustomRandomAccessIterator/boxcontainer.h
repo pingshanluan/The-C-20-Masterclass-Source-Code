@@ -95,7 +95,7 @@ public:
             return tmp;
         }
 
-		//Random access
+		//Random access iterator needs: Start
 		Iterator& operator+=(const difference_type offset) {
             m_ptr += offset;
             return *this;
@@ -144,7 +144,7 @@ public:
             Iterator tmp = it;
             return tmp += offset;
         }
-		//Random access - End
+		//Random access iterator needs: End
 
 		private : 
 			pointer_type m_ptr;
@@ -309,11 +309,11 @@ void BoxContainer<T>::operator =(const BoxContainer<T>& source){
 	// Check for self-assignment:
 	if (this == &source)
             return;
-/*
+
 	// If the capacities are different, set up a new internal array
 	//that matches source, because we want object we are assigning to 
 	//to match source as much as possible.
-	*/
+	
 	if (m_capacity != source.m_capacity)
 	{ 
 	    new_items = new T[source.m_capacity];

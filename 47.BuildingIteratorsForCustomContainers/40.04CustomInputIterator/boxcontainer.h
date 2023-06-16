@@ -4,6 +4,11 @@
 #include <iostream>
 #include <concepts>
 
+//custom iterators must be used along with tempalted classes.
+//for non-templated class, the compiler would not generate custom iterators.
+//custom iterators need to be defined in nested classes, with type alias expected by STL
+
+
 template <typename T>
 requires std::is_default_constructible_v<T>
 class BoxContainer
@@ -47,26 +52,30 @@ public:
 	void operator +=(const BoxContainer<T>& operand);
 	void operator =(const BoxContainer<T>& source);
 
+	//! Custom iterators. 
 	public : 
 	class Iterator{
+		// type alias must be provided as expected by the STL
 		public : 
 		        using iterator_category = std::input_iterator_tag;
 				using difference_type   = std::ptrdiff_t;
 				using value_type        = T;
 				using pointer_type           = T*;
 				using reference_type         = T&;
-
-		Iterator() = default;
+		//constructor, construct with pointers
+		Iterator() = default;		//explicti default, Iterator() calls Iterator(nullptr)?
         Iterator(pointer_type ptr) : m_ptr(ptr) {}
-    
+
+		//overloading operators
+		// for dereferencing *
     	reference_type operator*() const {
             return *m_ptr;
         }
-
+		// for pointing ->
 		pointer_type operator->() {
             return m_ptr;
         }
-
+		// for increment ++
         Iterator& operator++() {
             m_ptr++; return *this;
         }  
@@ -89,6 +98,7 @@ public:
 		private : 
 			pointer_type m_ptr;
 	};
+	//construct custom iterator obj begin and end
 	Iterator begin() { return Iterator(&m_items[0]); }
     Iterator end()   { return Iterator(&m_items[m_size]); }
 	
@@ -108,7 +118,6 @@ BoxContainer<T> operator +(const BoxContainer<T>& left, const BoxContainer<T>& r
 
 
 //Definitions moved into here
-
 template <typename T> requires std::is_default_constructible_v<T>
 BoxContainer<T>::BoxContainer(size_t capacity)
 {
@@ -249,11 +258,11 @@ void BoxContainer<T>::operator =(const BoxContainer<T>& source){
 	// Check for self-assignment:
 	if (this == &source)
             return;
-/*
+
 	// If the capacities are different, set up a new internal array
 	//that matches source, because we want object we are assigning to 
 	//to match source as much as possible.
-	*/
+
 	if (m_capacity != source.m_capacity)
 	{ 
 	    new_items = new T[source.m_capacity];

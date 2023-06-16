@@ -58,7 +58,7 @@ public:
 
 		Iterator() = default;
         Iterator(pointer_type ptr) : m_ptr(ptr) {}
-    
+		//for std::copy to work, overloading the * is all you need, adding const to guarantee constness
     	reference_type operator*() const {
             return *m_ptr;
         }

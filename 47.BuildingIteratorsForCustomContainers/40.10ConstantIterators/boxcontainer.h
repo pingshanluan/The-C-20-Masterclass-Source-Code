@@ -149,14 +149,16 @@ public:
 		private : 
 			pointer_type m_ptr;
 	};
-
+	
+	//for const_iterator. const_iterator is needed when the container is const.
 	class ConstIterator 
     {
     public : 
         using iterator_category = std::random_access_iterator_tag;
         using difference_type   = std::ptrdiff_t;
         using value_type        = T;
-        using pointer_type           = const T*;
+        //for const_iterator, pointer and reference types are const
+		using pointer_type           = const T*;			
         using reference_type         = const T&;
 
 		ConstIterator() = default;

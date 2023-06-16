@@ -4,6 +4,8 @@
 #include <iostream>
 #include <concepts>
 
+//if pointers are iterators, they are the most powerful type equiavelent to random_access
+
 template <typename T>
 requires std::is_default_constructible_v<T>
 class BoxContainer
@@ -13,11 +15,11 @@ class BoxContainer
 	static const size_t DEFAULT_CAPACITY = 5;  
 	static const size_t EXPAND_STEPS = 5;
 public:
+	//constructor
 	BoxContainer(size_t capacity = DEFAULT_CAPACITY);
 	BoxContainer(const BoxContainer& source) requires std::copyable<T>;
 	~BoxContainer();
-	
-	
+		
 	friend std::ostream& operator<<(std::ostream& out, const BoxContainer<T>& operand)
 	{
 		out << "BoxContainer : [ size :  " << operand.m_size
@@ -47,6 +49,7 @@ public:
 	void operator +=(const BoxContainer<T>& operand);
 	void operator =(const BoxContainer<T>& source);
 
+	//this will enable pointers as iterators
 	public : 
 		T* begin() { return m_items; }
 		T* end()   { return m_items + m_size; }
@@ -58,7 +61,7 @@ public:
 		const T* cbegin() { return m_items; }
 		const T* cend()   { return m_items + m_size; }
 
-	/*
+	/* no longer needs Iterator class, as pointers are used as iterator
 	class Iterator{
 		public : 
 		        using iterator_category = std::random_access_iterator_tag;

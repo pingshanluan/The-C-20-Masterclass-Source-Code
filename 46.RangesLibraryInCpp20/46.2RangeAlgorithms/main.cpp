@@ -1,6 +1,8 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <ranges>
+#include <concepts>
 
 //range algorithms operate without user specified iterator pair and work with containers directly.
 //lives in std::ranges namespace
@@ -67,8 +69,16 @@ int main(){
 
     //Important, copying into outputstream on the fly
     std::cout << std::endl;
+    std::cout << "std::ranges::copy()\n";
     std::cout << "numbers : " ;
     std::ranges::copy(numbers,std::ostream_iterator<int>(std::cout, " "));
-   
+    std::cout << std::endl;
+
+   /*Ostream iterators are output iterators that write sequentially to an output stream (such as cout).
+    
+    They are constructed from a basic_ostream object, to which they become associated, so that whenever an assignment operator (=) is used on the ostream_iterator (de-referenced or not) it inserts a new element into the stream.
+
+    Optionally, a delimiter can be specified on construction. This delimiter is written to the stream after each element is inserted.
+    */
     return 0;
 }

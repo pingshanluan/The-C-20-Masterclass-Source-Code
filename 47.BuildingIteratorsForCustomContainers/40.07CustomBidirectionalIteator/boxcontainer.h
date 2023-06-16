@@ -85,7 +85,7 @@ public:
             //return a.m_ptr != b.m_ptr; 
 			return !(a == b);
         } 
-
+		//needed for bidirectional_iterator
 		Iterator& operator--() {
             m_ptr--; return *this;
         }  

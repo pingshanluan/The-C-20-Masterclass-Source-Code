@@ -66,7 +66,7 @@ public:
 		pointer_type operator->() {
             return m_ptr;
         }
-
+		// this is needed for forward iterator
         Iterator& operator++() {
             m_ptr++; return *this;
         }  
