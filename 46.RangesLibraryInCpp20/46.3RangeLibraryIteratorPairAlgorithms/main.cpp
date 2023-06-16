@@ -5,6 +5,9 @@
 #include <vector>
 #include <algorithm>
 
+//iterator pairs can still be used in Ranges library.
+//Prefer to use Ranges version of the algorithm, it offers better error handling
+
 template<typename T>
 void print_collection( const T& collection){
     
@@ -14,9 +17,6 @@ void print_collection( const T& collection){
     }
     std::cout << "]" << std::endl;
 }
-
-
-
 
 int main(){
 

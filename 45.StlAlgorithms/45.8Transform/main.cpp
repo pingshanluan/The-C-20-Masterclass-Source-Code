@@ -2,6 +2,11 @@
 #include <algorithm>
 #include <vector>
 
+// std::transform(source_it_first, source_it_last, dest_it_first, uop);        
+    //applies the given unary operation function to a range and stores the result in another range, keeping the original elements order and beginning at d_first.
+// std::transform(source1_it_first, source1_it_last, source2_it_first dest_it_first, bop);        
+    //applies the given binary operation to pairs of elements from two ranges: one defined by [source1_it_first, source1_it_last) in source1, and the other beginning at source2_it_first. Keeping the original elements order and beginning at d_first.
+
 template<typename T>
 void print_collection( const T& collection){
     

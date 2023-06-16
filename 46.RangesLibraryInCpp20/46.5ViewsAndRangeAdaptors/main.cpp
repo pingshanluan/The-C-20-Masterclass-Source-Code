@@ -3,6 +3,9 @@
 #include <algorithm>
 #include <vector>
 
+//view is a non-owning range. It does not own the data but provides access to the data
+
+
 void print(auto  view){
     for(auto i : view){ // Computation happens here.
         std::cout << i << " ";
@@ -34,9 +37,9 @@ int main(){
     };
     std::cout << "vi : " ;
     print(vi);
-    std::ranges::filter_view v_evens = std::ranges::filter_view(vi,evens); //No computation
+    std::ranges::filter_view v_evens = std::ranges::filter_view(vi,evens);      //No computation
     std::cout << "vi evens : ";
-    print(v_evens); //Computation happens in the print function
+    print(v_evens);             //Computation happens in the print function
     //Print evens on the fly 
     std::cout << "vi evens : " ;
     print(std::ranges::filter_view(vi,evens));
@@ -54,6 +57,10 @@ int main(){
     std::cout <<std::endl;
     std::cout << "std::ranges::transform_view : " << std::endl;
     std::ranges::transform_view v_transformed = std::ranges::transform_view(vi,[](int i){
+        return i * 10;
+    });
+    //or just use auto:
+    auto v_transformed2 = std::ranges::transform_view(vi,[](int i){
         return i * 10;
     });
     std::cout << "vi : " ;

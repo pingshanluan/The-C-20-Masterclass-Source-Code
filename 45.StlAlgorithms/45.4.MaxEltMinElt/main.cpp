@@ -3,6 +3,8 @@
 #include <set>
 #include <list>
 
+// std::max_element(it_begin, it_end, comparator);          //returns iterator, comparator (comparison function object) is optional
+// comparator: bool comp(const Type1 &a, const Type2 &b);   //returns ​true if a is less than b.
 
 int main(){
 
@@ -23,11 +25,12 @@ int main(){
     //Distances : closest and furthest
     int number_to_find {100};
     
+    //custom comparator: find the number that's closet to "number_to_find"
     auto distance = [number_to_find](int x, int y){
         return (std::abs(x-number_to_find) < std::abs(y-number_to_find));
     };
     
-    //Finding the closest
+    //Finding the closest, returns iterator
     result = std::min_element(std::begin(v),std::end(v),distance);
     std::cout << *result << " is closest to " << number_to_find << std::endl;
     

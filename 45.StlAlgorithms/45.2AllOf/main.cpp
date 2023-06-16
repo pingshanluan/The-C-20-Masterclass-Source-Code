@@ -3,11 +3,13 @@
 #include <set>
 #include <vector>
 
+//STL Algorithms: unified way for all STL containers
+//std::all_of(it_begin, it_end, predicate) , lambda function as predicate
+//predicate p takes elements in STL container e as argument, p(e) is executed for each element
 
 bool is_odd(int n){
    return n % 2 != 0; 
 }
-
 
 int main(){
 
@@ -15,7 +17,7 @@ int main(){
     //std::set<int> collection{2,6,8,40,64,70};
     //int collection[] {2,6,8,40,64,70};
 
-    //std::all_of , lambda function predicate
+
     if (std::all_of(std::begin(collection), std::end(collection), [](int i){ return i % 2 == 0; })) {
         std::cout << "(std::all_of) :  All numbers in collection are even" << std::endl;
     }else{

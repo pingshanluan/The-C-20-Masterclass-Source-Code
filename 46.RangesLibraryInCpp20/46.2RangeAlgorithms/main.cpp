@@ -2,6 +2,8 @@
 #include <algorithm>
 #include <vector>
 
+//range algorithms operate without user specified iterator pair and work with containers directly.
+//lives in std::ranges namespace
 
 template<typename T>
 void print_collection( const T& collection){
@@ -22,11 +24,9 @@ int main(){
     //std::ranges::all_of()
     std::cout << std::endl;
     std::cout << "std::ranges::all_of() : " << std::endl;
-
     auto odd = [](int n){
         return n%2 !=0;
     };
-    
     auto result = std::ranges::all_of(numbers,odd);
 
     if(result){

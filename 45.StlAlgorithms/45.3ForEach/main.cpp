@@ -3,8 +3,10 @@
 #include <set>
 #include <vector>
 
+// std::for_each(it_begin, it_end, predicate);      //apply predicate on each element
+//predicate p takes elements in STL container e as argument, p(e) is executed for each element
 
-struct Sum
+struct Sum      //Sum is a functor
 {
     void operator()(int n) { sum += n; }
     int sum{0};
